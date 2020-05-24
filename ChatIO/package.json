@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/Diegoalru/ChatIO.git"
   },
-  "author": "Diego Alonso Rubí Salas.",
+  "author": "Diego Alonso Rubí Salas",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Diegoalru/ChatIO/issues"
@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.3"
   }
 }
