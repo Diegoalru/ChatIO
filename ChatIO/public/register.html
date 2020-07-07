@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>ChatIO</title>
+</head>
+
+<body>
+  <div class="join-container">
+    <header class="join-header">
+      <h1><i class="fas fa-smile"></i>ChatIO</h1>
+    </header>
+    <main class="join-main">
+      <form id="register-form">
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="Enter username..." required />
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter email..." required />
+        </div>
+        <div class="form-control">
+          <label for="password1">Password</label>
+          <input type="password" name="password1" id="password1" placeholder="Enter password..." required />
+        </div>
+        <div class="form-control">
+          <label for="password2">Password Confirmation</label>
+          <input type="password" name="password2" id="password2" placeholder="Enter password confirmation..."
+            required />
+        </div>
+        <button type="submit" class="btn" id="register">Register</button>
+      </form>
+      <button type="button" class="btn" id="back">Back</button>
+
+      <br><br>
+      <div class="omb_login">
+        <h3 class="omb_authTitle">Registro </h3>
+      <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+              <a href="www.facebook.com" class="btn btn-lg btn-block omb_btn-facebook">
+                <i class="fa fa-facebook visible-xs"></i>
+                <span class="hidden-xs">Facebook</span>
+              </a>
+            </div>
+            <br><br>
+            <div class="col-xs-4 col-sm-2">
+              <a href="www.twitter.com" class="btn btn-lg btn-block omb_btn-twitter">
+                <i class="fa fa-twitter visible-xs"></i>
+                <span class="hidden-xs">Twitter</span>
+              </a>
+            </div>	
+            <br><br>
+            <div class="col-xs-4 col-sm-2">
+              <a href="www.google.com" class="btn btn-lg btn-block omb_btn-google">
+                <i class="fa fa-google-plus visible-xs"></i>
+                <span class="hidden-xs">Google+</span>
+              </a>
+            </div>	
+      </div>
+
+      
+
+      
+    </main>
+  </div>
+
+
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"
+  integrity="sha256-ijqLssetA1NMNjZ+w1zaUafQQLm4IW5OoM8O+4tatME=" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/register.js"></script>
+
+</html>
