@@ -1,19 +1,15 @@
 //Declaración de paquetes
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const socketio = require('socket.io');
-const formatMessage = require('./utils/messages');
-const { userJoin, getCurrentUser, userLeaves, getRoomUsers } = require('./utils/users');
+import { createServer } from 'http';
+import express from 'express';
+import socketio from 'socket.io';
+import formatMessage from './utils/messages.js';
+import * as userUtils from './utils/users.js';
 
 const app = express();
 
 //Inicialización del servidor.
-const server = http.createServer(app);
+const server = createServer(app);
 const io = socketio(server);
-
-//Establecer el directorio raiz del proyecto.
-app.use(express.static(path.join(__dirname, 'public')));
 
 //Nombre de usuario para los mensajes del sistema
 const SysName = 'ChatIO';
@@ -28,7 +24,7 @@ io.on('connection', socket => {
     socket.on('joinRoom', ({ username, room }) => {
 
         //Crea un objetco usuario
-        const user = userJoin(socket.id, username, room);
+        const user = userUtils.userJoin(socket.id, username, room);
 
         //Se ingresa el suaurio a la sala elegida
         socket.join(user.room);
@@ -42,14 +38,14 @@ io.on('connection', socket => {
         //Emite mensajes a los usuarios de las salas.
         io.to(user.room).emit('roomUsers', {
             room: user.room,
-            users: getRoomUsers(user.room)
+            users: userUtils.getRoomUsers(user.room)
         });
 
         //Mensaje cuando alguien se desconecta del servidor.
         socket.on('disconnect', () => {
 
             //Envia 
-            const user = userLeaves(socket.id);
+            const user = userUtils.userLeaves(socket.id);
 
             if(user){
                 //Envia mensaje a todos los de la sala.
@@ -58,7 +54,7 @@ io.on('connection', socket => {
 
             io.to(user.room).emit('roomUsers', {
                 room: user.room,
-                users: getRoomUsers(user.room)
+                users: userUtils.getRoomUsers(user.room)
             });
 
         });
@@ -68,7 +64,7 @@ io.on('connection', socket => {
     socket.on('chatMessage', msg => {
 
         //Obtenemos los valores de la sesion ya antes establecidos.
-        const user = getCurrentUser(socket.id);
+        const user = userUtils.getCurrentUser(socket.id);
 
         //Muestra en consola el mensaje recibido
         console.log(`Mensaje recibido: ${msg}`);
